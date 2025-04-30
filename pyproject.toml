@@ -1,0 +1,13 @@
+[project]
+name = "pymltools"
+version = "0.1.0"
+description = "A modular Python package"
+authors = [{name="Aidan LaBella", email="alabella@brown.edu"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.8"
+
+dependencies = [
+    "sqlalchemy >= 2.0.0",
+]
+
