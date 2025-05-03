@@ -1,7 +1,7 @@
 [project]
-name = "pymltools"
-version = "0.1.0"
-description = "A modular Python package"
+name = "pymlops"
+version = "1.0.0"
+description = "Lightweight toolkit for MLops in Python."
 authors = [{name="Aidan LaBella", email="alabella@brown.edu"}]
 license = {text = "MIT"}
 readme = "README.md"
