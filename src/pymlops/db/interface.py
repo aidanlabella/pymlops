@@ -98,7 +98,7 @@ class DBInterface:
 
         if atomic:
             try:
-                self.query("BEGIN EXCLUSIVE;")
+                self.connection.execute(text("BEGIN EXCLUSIVE"))
                 self.connection.execute(ps)
                 self.connection.commit()
             except Exception as e:
