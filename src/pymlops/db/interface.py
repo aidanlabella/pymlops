@@ -95,13 +95,13 @@ class DBInterface:
         ps = t.update().values(data).where(and_(*conditions))
 
         if atomic:
-            trans = self.connection.begin()
             try:
+                self.query("BEGIN EXCLUSIVE;")
                 self.connection.execute(ps)
-                trans.commit()
+                self.connection.commit()
             except Exception as e:
                 print("Caught", e, file=sys.stderr)
-                trans.rollback()
+                self.connection.rollback()
         else:
             self.connection.execute(ps)
             self.connection.commit()
