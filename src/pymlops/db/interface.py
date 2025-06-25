@@ -1,3 +1,5 @@
+import sys
+
 from typing import List, Dict
 from sqlalchemy import create_engine, select, delete, Column, Integer, String, MetaData, Table, and_, text
 from sqlalchemy.orm import sessionmaker
@@ -10,13 +12,13 @@ class DBInterface:
     Attributes: 
         engine: The engine from sqlalchemy
     """
-    def __init__(self, connection_string: str):
+    def __init__(self, connection_string: str, connect_args: {} = None):
         """
             Intialize a DBInterface object
         Args:
             connection_string: the sqlalchemy connection string
         """
-        self.engine = create_engine(connection_string, pool_recycle=3600)
+        self.engine = create_engine(connection_string, connect_args=connect_args, pool_recycle=3600)
 
         if self.engine is not None:
             self.connection = self.engine.connect()
