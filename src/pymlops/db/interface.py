@@ -12,7 +12,7 @@ class DBInterface:
     Attributes: 
         engine: The engine from sqlalchemy
     """
-    def __init__(self, connection_string: str, connect_args: {} = None):
+    def __init__(self, connection_string: str, connect_args: {} = {}):
         """
             Intialize a DBInterface object
         Args:
