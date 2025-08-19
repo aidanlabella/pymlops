@@ -23,6 +23,17 @@ class DBInterface:
         if self.engine is not None:
             self.connection = self.engine.connect()
 
+        if 'sqlite' in connection_string:
+            raw_conn = self.connection.connection
+            cursor = raw_conn.cursor()
+
+            cursor.execute("PRAGMA journal_mode=WAL;")
+            cursor.execute("PRAGMA synchronous=NORMAL;")
+            cursor.execute("PRAGMA wal_autocheckpoint=1000")
+            cursor.execute("PRAGMA foreign_keys=ON;")
+
+            cursor.close()
+
     def get_engine(self):
         """
             Get the db engine
